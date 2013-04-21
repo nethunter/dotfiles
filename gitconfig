@@ -1,6 +1,6 @@
-#[user]
-#    email = xsawyerx@cpan.org
-#    name  = Sawyer X
+[user]
+    email = nethunter@studiosh.com
+    name  = David Tabachnikov
 
 [alias]
     st   = status
