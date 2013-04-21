@@ -81,6 +81,5 @@ function mkpass() { perl -MCrypt::XkcdPassword -E'say Crypt::XkcdPassword->new(w
 
 EDITOR='vim'
 
-. ~/.git_term
-. ~/.aliases
-
+. ~/.dotfiles/git_term
+. ~/.dotfiles/aliases
