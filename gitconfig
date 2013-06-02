@@ -3,20 +3,26 @@
     name  = David Tabachnikov
 
 [alias]
-    st   = status
-    ci   = commit
-    br   = branch
-    co   = checkout
-    df   = diff --color
-    dc   = diff --color --cached
-    lg   = log -p --color
-    who  = shortlog -s --
-    lp   = log --graph --pretty=format:'%Cred%h%Creset — %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color
-    undo = reset --hard
-    lol  = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    ls   = ls-files
-    git  = "!f() { git \"$@\"; }; f"
+    st       = status
+    ci       = commit
+    br       = branch
+    co       = checkout
+    df       = diff --color
+    dc       = diff --color --cached
+    lg       = log -p --color
+    who      = shortlog -s --
+    lp       = log --graph --pretty=format:'%Cred%h%Creset — %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color
+    undo     = reset --hard
+    lol      = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola     = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls       = ls-files
+    git      = "!f() { git \"$@\"; }; f"
+    assume   = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+    ours     = "!f() { git checkout --ours $@ && git add $@; }; f"
+    heirs    = "!f() { git checkout --theirs $@ && git add $@; }; f"
+
 
 # coloring!
 [color]

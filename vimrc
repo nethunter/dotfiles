@@ -30,3 +30,10 @@ autocmd FileType make setlocal noexpandtab
 " noremap [3~ gT
 
 set background=light
+set number
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+colorscheme corporation
+set t_Co=256
