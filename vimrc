@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles:
-
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
@@ -21,9 +20,11 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'Lokaltog/vim-distinguished'
-Bundle 'bling/vim-airline'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode='ra'
+
+Bundle 'bling/vim-airline'
 
 " I hate spaces in end of lines or tabs anywhere
 match Error /\t\|\s\+$/
@@ -61,9 +62,12 @@ set tabstop=4
 set ts=4
 set expandtab
 set sw=4
+set laststatus=2
 syntax on
 filetype plugin indent on
-set background=dark
-colorscheme distinguished
+colorscheme solarized
+
+au BufRead,BufNewFile *.hamlc set ft=haml
 
 map <C-n> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
