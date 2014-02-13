@@ -21,6 +21,10 @@ Bundle 'scrooloose/syntastic'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'elentok/supertagger'
+Bundle 'mileszs/ack.vim'
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode='ra'
 
@@ -50,24 +54,30 @@ imap <C-c> <CR><Esc>O
 set background=dark
 set number
 set t_Co=256
+set mouse=a
 let g:airline_powerline_fonts=1 
 
 filetype plugin indent on
 
 " convert tabs to spaces, use 4 spaces (in tab jump and shift)
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set ts=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set ts=2
 set expandtab
-set sw=4
+set sw=2
 set laststatus=2
 syntax on
 filetype plugin indent on
 colorscheme solarized
 
 au BufRead,BufNewFile *.hamlc set ft=haml
+
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 map <C-n> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
