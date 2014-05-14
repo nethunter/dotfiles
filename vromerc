@@ -1,0 +1,3 @@
+# switch tabs
+map <C-l> gt
+map <C-h> gT
