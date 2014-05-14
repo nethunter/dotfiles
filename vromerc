@@ -4,6 +4,9 @@ set disable_autofocus=1
 " Don't follow new tab
 set follow_new_tab=0
 
+" Close tab with x
+map x D
+
 " move tab
 map J gT
 map K gt
