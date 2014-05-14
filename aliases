@@ -10,6 +10,7 @@ alias realias='$EDITOR ~/.dotfiles/aliases; source ~/.dotfiles/aliases'
 alias git-archive-here='git archive --format=tar HEAD | gzip'
 alias feature='git flow feature'
 alias release='git flow release'
+alias sym='php app/console'
 
 alias ps?='ps -ef | grep'
 alias s='sudo'
