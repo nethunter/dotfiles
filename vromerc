@@ -1,3 +1,9 @@
-# switch tabs
-map <C-l> gt
-map <C-h> gT
+" Don't autofocus when loaded
+set disable_autofocus=1
+
+" Don't follow new tab
+set follow_new_tab=0
+
+" move tab
+map J gT
+map K gt
