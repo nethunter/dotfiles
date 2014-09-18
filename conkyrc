@@ -1,0 +1,123 @@
+######################
+# - Conky settings - #
+######################
+update_interval 2
+total_run_times 0
+net_avg_samples 2
+cpu_avg_samples 2
+
+imlib_cache_size 0
+double_buffer no
+no_buffers yes
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont DroidSans:size=9
+xftalpha 0.1
+override_utf8_locale yes
+text_buffer_size 1024
+
+#############################
+# - Window specifications - #
+#############################
+background yes
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_class.dotfiles/conky-semi
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+#own_window_argb_visual yes
+#own_window_argb_value 255
+draw_outline no
+draw_borders no
+out_to_ncurses no
+pad_percents 0
+border_inner_margin 4
+top_name_width 10
+use_spacer right
+
+
+alignment top_right
+gap_x 10
+gap_y 10
+minimum_size 350 740
+maximum_width 345
+
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades yes
+default_shade_color 292421
+short_units yes
+
+default_color efefef
+default_shade_color 1d1d1d
+color1 FFFFF0
+color2 7dd824
+#e25817
+#7dd824
+#300a24
+#lua_load ~/.dotfiles/conky/conkybg.lua
+#lua_draw_hook_pre.dotfiles/conky_draw_bg
+
+TEXT
+##############
+${voffset 30}${font DroidSans:style=Bold:size=20}${offset 120}${pre_exec lsb_release -sd || cat /etc/*release}${font}
+${voffset 5}${offset 150}${font OpenLogos:size=12}${color2}Z${voffset -4}${font DroidSans:size=9}${color1}${sysname}${offset 3}${kernel}${font DroidSans:size=9}${machine}${font}
+##################
+${voffset 20}${offset 10}${font DroidSans:bold:size=10}${color2}SYSTEM INFO${offset 5}${color2}${voffset 1}${hr 2}${font}
+${voffset 2}${offset 30}${font StyleBats:size=10}${color2}q${voffset -2}${offset 3}${font DroidSans:size=9}${color1}System${offset 3}Uptime${alignr}${font DroidSans:size=9}${uptime_short}${font}
+${voffset 2}${offset 30}${font StyleBats:size=10}${color2}l${voffset -2}${offset 3}${font DroidSans:size=9}${color1}System${offset 3}Load${alignr}${font DroidSans:size=9}${loadavg}${font}
+${voffset 2}${offset 30}${font StyleBats:size=10}${color2}i${voffset -2}${offset 3}${font DroidSans:size=9}${color1}Battery${offset 3}Status${alignr}${font DroidSans:size=9}${battery BAT0}${font}
+${voffset 2}${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${offset 3}${font DroidSans:size=9}${color1}Processor${alignr}${font DroidSans:size=9}${execi 1000 cat /proc/cpuinfo | awk '/model name/ {gsub(/\([^)]+\)/,""); print $4, $5, $6}' | uniq}${font}
+${voffset 2}${offset 30}${font StyleBats:size=10}${color2}d${voffset -2}${offset 3}${font DroidSans:size=9}${color1}Video Card${alignr}${font DroidSans:size=9}${execi 1000 lspci | grep NVIDIA | awk '{print $8,$9,$10}' | cut -f2 -d"[" | cut -f1 -d"]"}${font}
+####################
+${voffset 35}${offset 10}${font DroidSans:bold:size=10}${color2}TOP PROCESSES${offset 5}${color2}${voffset 1}${hr 2}${font}
+${offset 30}${font DroidSans:bold:size=8}${color2}name${goto 140}cpu usage${alignr 55}PID${alignr}memory${font}
+${offset 30}${font StyleBats:size=10}${color2}h${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}${top name 1}${goto 150}${font DroidSans:size=8.65}${top cpu 1}${alignr 60}${font DroidSans:size=8.65}${top pid 1}${alignr}${top mem_res 1}${font}
+${offset 30}${font StyleBats:size=10}${color2}h${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}${top name 2}${goto 150}${font DroidSans:size=8.65}${top cpu 2}${alignr 60}${font DroidSans:size=8.65}${top pid 2}${alignr}${top mem_res 2}${font}
+${offset 30}${font StyleBats:size=10}${color2}h${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}${top name 3}${goto 150}${font DroidSans:size=8.65}${top cpu 3}${alignr 60}${font DroidSans:size=8.65}${top pid 3}${alignr}${top mem_res 3}${font}
+${offset 30}${font StyleBats:size=10}${color2}h${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}${top name 4}${goto 150}${font DroidSans:size=8.65}${top cpu 4}${alignr 60}${font DroidSans:size=8.65}${top pid 4}${alignr}${top mem_res 4}${font}
+${offset 30}${font StyleBats:size=10}${color2}h${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}${top name 5}${goto 150}${font DroidSans:size=8.65}${top cpu 5}${alignr 60}${font DroidSans:size=8.65}${top pid 5}${alignr}${top mem_res 5}${font}
+########################
+${voffset 23}${offset 45}${font DroidSans:bold:size=10}${color2}CPU STATS${offset 5}${color2}${voffset 1}${hr 2}${font}
+${offset 30}${font DroidSans:bold:size=8}${color2}Core${goto 140}Usage${alignr 75}Temp${alignr}Freqs${font}
+${voffset 3}${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 0${goto 150}${font DroidSans:size=8.65}${cpu cpu0}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 0' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 0}GHz${font}
+${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 1${goto 150}${font DroidSans:size=8.65}${cpu cpu1}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 1' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 1}GHz${font}
+${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 2${goto 150}${font DroidSans:size=8.65}${cpu cpu2}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 2' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 2}GHz${font}
+${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 3${goto 150}${font DroidSans:size=8.65}${cpu cpu3}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 3' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 3}GHz${font}
+#${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 4${goto 150}${font DroidSans:size=8.65}${cpu cpu4}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 4' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 4}GHz${font}
+#${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 5${goto 150}${font DroidSans:size=8.65}${cpu cpu5}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 5' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 5}GHz${font}
+#${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 6${goto 150}${font DroidSans:size=8.65}${cpu cpu6}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 6' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 6}GHz${font}
+#${offset 30}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Core 7${goto 150}${font DroidSans:size=8.65}${cpu cpu7}%${alignr 60}${font DroidSans:size=8.65}${execi 2 sensors | grep 'Core 7' | awk '{print $3}' | cut -c2-3}°C${alignr}${freq_g 7}GHz${font}
+###############################
+${voffset 23}${offset 45}${font DroidSans:bold:size=10}${color2}GPU STATS${offset 5}${color2}${voffset 1}${hr 2}${font}
+${offset 30}${font DroidSans:bold:size=8}${color2}Driver${goto 145}State${alignr 75}Temp${alignr}Freq${font}
+${offset 30}${font StyleBats:size=10}${color2}r${voffset -1}${font DroidSans:size=8.65}${color3}${pre_exec dpkg --status nvidia-310 | grep Version | cut -f 1 -d '-' | sed 's/[^.,0-9]//g'}${goto 150}${font DroidSans:size=8.65}${execi 5 cat /proc/acpi/bbswitch | awk '{ print $2 }'}${if_match "${execi 5 cat /proc/acpi/bbswitch | awk '{ print $2 }'}"=="ON"} ${alignr 50}${font DroidSans:size=8.65} ${execi 30 optirun -b none nvidia-settings -c :8 -t -q gpucoretemp}°C ${alignr}${execi 30 optirun -b none nvidia-settings -c :8 -t -q GPUCurrentProcessorClockFreqs}Mhz${font}$endif
+##################################
+${voffset 15}${offset 45}${font DroidSans:bold:size=10}${color2}MEMORY STATS${offset 5}${color2}${voffset 1}${hr 2}${font}
+${offset 30}${font DroidSans:bold:size=8}${color2}RAM used${goto 145}Free${alignr 50}HDD used${alignr}Temp${font}
+${offset 30}${font StyleBats:size=10}${color2}y${voffset -2}${font DroidSans:size=8.65}${color3}${offset 5}${memperc}%${goto 140}${font DroidSans:size=8.65}${memeasyfree}${alignr 60}${font DroidSans:size=8.65}${fs_used_perc /home}%${alignr}${execi 30 hddtemp /dev/sda | awk '{ print $NF }'}${font}
+###################################
+${voffset 20}${offset 45}${font DroidSans:bold:size=10}${color2}NETWORK STATS${offset 5}${color2}${voffset 1}${hr 2}${font}
+${voffset 5}${offset 30}${font DroidSans:bold:size=8}${color2}DownSpeed${goto 125}Total down${alignr 40}UpSpeed${alignr}Total up${font}
+${offset 30}${font StyleBats:size=10}${color2}Z${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}${downspeed eth0}${goto 150}${font DroidSans:size=8.65}${totaldown eth0}${alignr 60}${font DroidSans:size=8.65}${upspeed eth0}${alignr}${totalup eth0}${font}
+${voffset 5}${offset 30}${font DroidSans:bold:size=8}${color2}Local IP${goto 140}Public IP${font}
+${offset 25}${font DroidSans:size=8.65}${color3}${offset 5}${addr eth0}${goto 140}${execi 150 curl icanhazip.com}${font}
+
+
+
+${image ~/.dotfiles/conky/base.png -p 0,0 -s 350x210}
+${image ~/.dotfiles/conky/base.png -p 0,215 -s 350x130}
+${image ~/.dotfiles/conky/base.png -p 0,355 -s 350x115}
+${image ~/.dotfiles/conky/base.png -p 0,475 -s 350x60}
+${image ~/.dotfiles/conky/base.png -p 0,540 -s 350x60}
+${image ~/.dotfiles/conky/base.png -p 0,605 -s 350x120}
+${image ~/.dotfiles/conky/Task_Manager.png -p 10,350 -s 35x35}
+${image ~/.dotfiles/conky/gforce.png -p 10,470 -s 35x35}
+${image ~/.dotfiles/conky/ubuntu.png -p 32,20 -s 60x60}
+${image ~/.dotfiles/conky/Memory.png -p 10,540 -s 35x35}
+${if_existing /sys/class/net/wlan0/operstate up}${image ~/.dotfiles/conky/wlan100.png -p 10,610 -s 35x25}$else  ${image ~/.dotfiles/conky/eth0.png -p 10,610 -s 35x25}$endif

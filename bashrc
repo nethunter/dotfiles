@@ -82,7 +82,9 @@ function mkpass() { perl -MCrypt::XkcdPassword -E'say Crypt::XkcdPassword->new(w
 
 export EDITOR='vim'
 
-# . ~/.dotfiles/git_term
+export PATH=$PATH:$PWD/bin/
+
+. ~/.dotfiles/git_term
 . ~/.dotfiles/aliases
 
 [[ $TERM != "screen" ]] && exec tmux

@@ -1,0 +1,37 @@
+--Fonts for VinDSL conky
+--I in no way take credit for any of VinDSL's work.
+--Fonts:
+	-Ahem.ttf
+	-cutouts.ttf (Fonts & Things)
+	-DroidSans.ttf (Google Android SDk)
+	-DroidSans-Bold.ttf (Google Android SDk)
+	-DroidSansFallback.ttf (Google Android SDk)
+	-DroidSansJapanese.ttf (Google Android SDk)
+	-DroidSansMono.ttf (Google Android SDk)
+	-DroidSerif-Bold.ttf (Google Android SDk)
+	-DroidSerif-BoldItalic.ttf (Google Android SDk)
+	-DroidSerif-Italic.ttf (Google Android SDk)
+	-DroidSerif-Regular.ttf (Google Android SDk)
+	-KR A Round (Kat's Fun Fonts)
+	-Moon.ttf (Curtis Clark)
+	-openlogos.ttf (Icoma)
+	-PizzDudeBullets.ttf (Jakob Fischer)
+	-Radiof.ttf (Iconian Fonts)
+	-Radiofb.ttf (Iconian Fonts)
+	-Radiofbi.ttf (Iconian Fonts)
+	-Radiofc.ttf (Iconian Fonts)
+	-Radiofi.ttf (Iconian Fonts)
+	-StylBCC_.ttf (Vinterstille)
+	-Ubuntu-B.ttf (Canonical Ltd)
+	-Ubuntu-Bl.ttf (Canonical Ltd)
+	-Ubuntu-L.ttf (Canonical Ltd)
+	-Ubuntu-LI.ttf (Canonical Ltd)
+	-Ubuntu-M.ttf (Canonical Ltd)
+	-Ubuntu-MI.ttf (Canonical Ltd)
+	-Ubuntu-R.ttf (Canonical Ltd)
+	-Ubuntu-RI.ttf (Canonical Ltd)
+	-Ubuntu-Title.ttf (Paulo Silva)
+	-wef___.ttf (Jonathan Macagba)
+--I in no way take any credit for any of the fonts.  Font credits go to the name next to the font.  
+--Also there is no ConkyWeather or ConkyWindNESW as they are included when you install ConkyForecast from Kaivalagi's PPA
+--http://ubuntuforums.org/showthread.php?t=869328
