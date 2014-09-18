@@ -26,7 +26,7 @@ set nohid
 set encoding=utf-8
 set fileencoding=utf-8
 
-set colorcolumn=82
+set colorcolumn=120
 
 
 set rtp+=~/.vim/bundle/vundle/
@@ -38,6 +38,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles:
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
   colorscheme solarized
 Bundle 'tpope/vim-fugitive'
@@ -50,20 +51,112 @@ Bundle 'scrooloose/syntastic'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'elentok/supertagger'
 Bundle 'mattn/emmet-vim'
+Bundle 'elentok/supertagger'
 Bundle 'evanmiller/nginx-vim-syntax'
 Bundle 'chrisbra/Recover.vim'
 Bundle 'wookiehangover/jshint.vim'
   let JSHintUpdateWriteOnly=1
 
+Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+Bundle 'compactcode/alternate.vim'
+Bundle 'compactcode/open.vim'
+nmap <Leader>s :OpenHorizontal(alternate#FindAlternate())<CR>
+
+Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/ZoomWin'
+Bundle 'timheap/linters.vim'
+
+Bundle 'mhinz/vim-startify'
+  autocmd FileType startify setlocal cursorline
+
+  let g:startify_enable_special         = 0
+  let g:startify_files_number           = 8
+  let g:startify_relative_path          = 1
+  let g:startify_change_to_dir          = 1
+  let g:startify_session_autoload       = 1
+  let g:startify_session_persistence    = 1
+  let g:startify_session_delete_buffers = 1
+
+  let g:startify_list_order = [
+        \ ['   LRU:'],
+        \ 'files',
+        \ ['   LRU within this dir:'],
+        \ 'dir',
+        \ ['   Sessions:'],
+        \ 'sessions',
+        \ ['   Bookmarks:'],
+        \ 'bookmarks',
+        \ ]
+
+  let g:startify_skiplist = [
+        \ 'COMMIT_EDITMSG',
+        \ $VIMRUNTIME .'/doc',
+        \ 'bundle/.*/doc',
+        \ '\.vimgolf',
+        \ ]
+
+  let g:startify_bookmarks = [
+        \ '~/.vim/vimrc',
+        \ '/data/vim/golfing',
+        \ ]
+
+  let g:startify_custom_header = [
+          \ '             *****                                                                  ',
+          \ '          **       **                                                               ',
+          \ '         *           *     ****    ****   ***************  ************  *********  ',
+          \ '        *   .*= .**   *    ****   ******   ***  **********   ********** ****   **** ',
+          \ '        *         .   *     ****  ******  ****         ****      ****  ****     ****',
+          \ '        *   .*  ..*   *     **** ******** ***   ***********    *****   *************',
+          \ '      **      =**    ,*      *******  *******  ****    ****   ****     ************ ',
+          \ '      :*.          .**        ******  ******  ****     **** *****      ****         ',
+          \ '         **********           *****    ****    ************************ *********** ',
+          \ '          ***   ***            ***     ****     ****** ***  ***********   ********  ',
+          \ '',
+          \ ]
+
+  hi StartifyBracket ctermfg=240
+  hi StartifyFile    ctermfg=147
+  hi StartifyFooter  ctermfg=240
+  hi StartifyHeader  ctermfg=114
+  hi StartifyNumber  ctermfg=215
+  hi StartifyPath    ctermfg=245
+  hi StartifySlash   ctermfg=240
+  hi StartifySpecial ctermfg=240
+
+Bundle 'elzr/vim-json'
+autocmd FileType json setlocal foldmethod=json
+
+Bundle 'majutsushi/tagbar'
+Bundle 'lukaszkorecki/CoffeeTags'
+
+Bundle 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader>a <Plug>(EasyAlign)
 
 Bundle 'mileszs/ack.vim'
   let g:ackprg = 'ag --nogroup --nocolor --column'
 
 Bundle 'kien/ctrlp.vim'
   let g:ctrlp_working_path_mode='ra'
+  let g:ctrlp_extensions = ['tag']
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
@@ -74,9 +167,6 @@ Bundle 'kien/ctrlp.vim'
       \ --ignore review
       \ -g ""'
 
-Bundle 'FelikZ/ctrlp-py-matcher'
-  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
 Bundle 'bling/vim-airline'
   map <C-l> :Bufferlist<CR>
 
@@ -84,12 +174,6 @@ Bundle 'sandeepcr529/Buffet.vim'
 
 " I hate spaces in end of lines or tabs anywhere
 match Error /\t\|\s\+$/
-
-
-" experimental, darkred? FFD9D9?
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" original: /\%81v.*/
-"match OverLength /\%81v.\+/
 
 " Makefiles work with tabs and not spaces
 autocmd FileType make setlocal noexpandtab
@@ -102,12 +186,16 @@ noremap! [OC <C-Right>
 
 imap <C-c> <CR><Esc>O
 
+inoremap <silent> <Esc> <C-O>:stopinsert<CR>
+
 au BufRead,BufNewFile *.hamlc set ft=haml
 
 autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 set title
+
+set background=dark
 
 augroup reload_vimrc " {
     autocmd!
@@ -118,11 +206,17 @@ set pastetoggle=<F2>
 
 nmap <silent> ,/ :nohlsearch<CR>
 
+" Insert a single character with Ctrl-I
+nmap <C-a> a_<esc>r
+
 " Trick if forgot to sudo
 cmap w!! %!sudo tee > /dev/null %
 
 map <C-n> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
+map <C-f> :NERDTreeFind<CR>
+
+noremap <C-q> :TagbarOpenAutoClose<CR>
+noremap <C-t> :Tagbar<CR>
 
 syntax enable
 filetype plugin indent on
