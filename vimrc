@@ -8,6 +8,7 @@ set number
 set t_Co=256
 set mouse=a
 let g:airline_powerline_fonts=1
+set guifont=Inconsolata\ for\ Powerline:h18
 
 " convert tabs to spaces, use 4 spaces (in tab jump and shift)
 set ruler
@@ -40,7 +41,6 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
-  colorscheme solarized
 Bundle 'tpope/vim-fugitive'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kchmck/vim-coffee-script'
@@ -49,6 +49,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle '29decibel/codeschool-vim-theme'
+  colorscheme codeschool
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/emmet-vim'
@@ -57,6 +58,12 @@ Bundle 'evanmiller/nginx-vim-syntax'
 Bundle 'chrisbra/Recover.vim'
 Bundle 'wookiehangover/jshint.vim'
   let JSHintUpdateWriteOnly=1
+
+Bundle 'rking/ag.vim'
+noremap <Leader>S :Ag <cword><cr>
+
+Bundle 'farseer90718/vim-taskwarrior'
+nmap <C-K> :TW<CR>
 
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -138,6 +145,8 @@ Bundle 'mhinz/vim-startify'
   hi StartifyPath    ctermfg=245
   hi StartifySlash   ctermfg=240
   hi StartifySpecial ctermfg=240
+
+nmap <Leader>n :Startify<CR>
 
 Bundle 'elzr/vim-json'
 autocmd FileType json setlocal foldmethod=json
