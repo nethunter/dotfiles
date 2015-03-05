@@ -56,14 +56,21 @@ Bundle 'mattn/emmet-vim'
 Bundle 'elentok/supertagger'
 Bundle 'evanmiller/nginx-vim-syntax'
 Bundle 'chrisbra/Recover.vim'
+Bundle 'bkad/CamelCaseMotion'
+
 Bundle 'wookiehangover/jshint.vim'
   let JSHintUpdateWriteOnly=1
 
+Bundle 'wting/gitsessions.vim'
+nnoremap <leader>gss :GitSessionSave<cr>
+nnoremap <leader>gsl :GitSessionLoad<cr>
+nnoremap <leader>gsd :GitSessionDelete<cr>
+
 Bundle 'rking/ag.vim'
-noremap <Leader>S :Ag <cword><cr>
+noremap <Leader>s :Ag <cword><cr>
 
 Bundle 'farseer90718/vim-taskwarrior'
-nmap <C-K> :TW<CR>
+nmap <Leader>t :TW<CR>
 
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -82,9 +89,6 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 Bundle 'compactcode/alternate.vim'
-Bundle 'compactcode/open.vim'
-nmap <Leader>s :OpenHorizontal(alternate#FindAlternate())<CR>
-
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'timheap/linters.vim'
